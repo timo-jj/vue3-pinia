@@ -23,9 +23,8 @@ export const useTodos2 = defineStore('todos2', () => {
 
   // Watcher
   watch(
-    r.todos,
+    () => r.todos,
     (val) => {
-      console.log(val.length)
       localStorage.setItem('todos2', JSON.stringify(val))
     },
     { deep: true, immediate: true }
@@ -42,7 +41,6 @@ export const useTodos2 = defineStore('todos2', () => {
 
   const deleteTodo = (id) => {
     r.todos = r.todos.filter((item) => item.id !== id)
-    console.log(r.todos.length)
   }
 
   const updateTodo = (id) => {
